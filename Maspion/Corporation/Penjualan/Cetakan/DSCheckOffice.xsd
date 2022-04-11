@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSCheckOffice" targetNamespace="http://tempuri.org/DSCheckOffice.xsd" xmlns:mstns="http://tempuri.org/DSCheckOffice.xsd" xmlns="http://tempuri.org/DSCheckOffice.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="MaspionConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MaspionConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Maspion.My.MySettings.GlobalReference.Default.MaspionConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MaspionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select a.tgl_pengakuan,a.no_check,c.nopol + ' (' + c.TIPE + ', ' + c.MODEL + ')' KENDARAAN,d.NAMA_USER DRIVER,b.NO_PENGIRIMAN,g.TGL_PENGAKUAN TGL_PENGIRIMAN,b.NO_NOTA,e.TGL_PENGAKUAN tgl_nota,f.NAMA CUSTOMER,e.dpp + e.ppn TOTAL,'OK' [CHECK] from check_office a join detail_check_office b on a.id_transaksi = b.id_transaksi join kendaraan c on c.kode_kendaraan = a.kendaraan join users d on d.ID_USER = a.DRIVER join nota e on e.ID_TRANSAKSI = b.ID_NOTA join customer f on f.KODE_APPROVE = e.KODE_APPROVE and f.ID = e.KODE_CUSTOMER join PENGIRIMAN g on g.ID_TRANSAKSI = b.ID_PENGIRIMAN</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tgl_pengakuan" DataSetColumn="tgl_pengakuan" />
+              <Mapping SourceColumn="no_check" DataSetColumn="no_check" />
+              <Mapping SourceColumn="KENDARAAN" DataSetColumn="KENDARAAN" />
+              <Mapping SourceColumn="DRIVER" DataSetColumn="DRIVER" />
+              <Mapping SourceColumn="NO_PENGIRIMAN" DataSetColumn="NO_PENGIRIMAN" />
+              <Mapping SourceColumn="TGL_PENGIRIMAN" DataSetColumn="TGL_PENGIRIMAN" />
+              <Mapping SourceColumn="NO_NOTA" DataSetColumn="NO_NOTA" />
+              <Mapping SourceColumn="tgl_nota" DataSetColumn="tgl_nota" />
+              <Mapping SourceColumn="CUSTOMER" DataSetColumn="CUSTOMER" />
+              <Mapping SourceColumn="TOTAL" DataSetColumn="TOTAL" />
+              <Mapping SourceColumn="CHECK" DataSetColumn="CHECK" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSCheckOffice" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSCheckOffice" msprop:Generator_UserDSName="DSCheckOffice">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tgl_pengakuan" msprop:Generator_ColumnVarNameInTable="columntgl_pengakuan" msprop:Generator_ColumnPropNameInRow="tgl_pengakuan" msprop:Generator_ColumnPropNameInTable="tgl_pengakuanColumn" msprop:Generator_UserColumnName="tgl_pengakuan" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="no_check" msprop:Generator_ColumnVarNameInTable="columnno_check" msprop:Generator_ColumnPropNameInRow="no_check" msprop:Generator_ColumnPropNameInTable="no_checkColumn" msprop:Generator_UserColumnName="no_check" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KENDARAAN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnKENDARAAN" msprop:Generator_ColumnPropNameInRow="KENDARAAN" msprop:Generator_ColumnPropNameInTable="KENDARAANColumn" msprop:Generator_UserColumnName="KENDARAAN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="605" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DRIVER" msprop:Generator_ColumnVarNameInTable="columnDRIVER" msprop:Generator_ColumnPropNameInRow="DRIVER" msprop:Generator_ColumnPropNameInTable="DRIVERColumn" msprop:Generator_UserColumnName="DRIVER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_PENGIRIMAN" msprop:Generator_ColumnVarNameInTable="columnNO_PENGIRIMAN" msprop:Generator_ColumnPropNameInRow="NO_PENGIRIMAN" msprop:Generator_ColumnPropNameInTable="NO_PENGIRIMANColumn" msprop:Generator_UserColumnName="NO_PENGIRIMAN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TGL_PENGIRIMAN" msprop:Generator_ColumnVarNameInTable="columnTGL_PENGIRIMAN" msprop:Generator_ColumnPropNameInRow="TGL_PENGIRIMAN" msprop:Generator_ColumnPropNameInTable="TGL_PENGIRIMANColumn" msprop:Generator_UserColumnName="TGL_PENGIRIMAN" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NO_NOTA" msprop:Generator_ColumnVarNameInTable="columnNO_NOTA" msprop:Generator_ColumnPropNameInRow="NO_NOTA" msprop:Generator_ColumnPropNameInTable="NO_NOTAColumn" msprop:Generator_UserColumnName="NO_NOTA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="tgl_nota" msprop:Generator_ColumnVarNameInTable="columntgl_nota" msprop:Generator_ColumnPropNameInRow="tgl_nota" msprop:Generator_ColumnPropNameInTable="tgl_notaColumn" msprop:Generator_UserColumnName="tgl_nota" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CUSTOMER" msprop:Generator_ColumnVarNameInTable="columnCUSTOMER" msprop:Generator_ColumnPropNameInRow="CUSTOMER" msprop:Generator_ColumnPropNameInTable="CUSTOMERColumn" msprop:Generator_UserColumnName="CUSTOMER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TOTAL" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTOTAL" msprop:Generator_ColumnPropNameInRow="TOTAL" msprop:Generator_ColumnPropNameInTable="TOTALColumn" msprop:Generator_UserColumnName="TOTAL" type="xs:double" minOccurs="0" />
+              <xs:element name="CHECK" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCHECK" msprop:Generator_ColumnPropNameInRow="CHECK" msprop:Generator_ColumnPropNameInTable="CHECKColumn" msprop:Generator_UserColumnName="CHECK" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

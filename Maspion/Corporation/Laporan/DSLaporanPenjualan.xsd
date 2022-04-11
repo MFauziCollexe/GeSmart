@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSLaporanPenjualan" targetNamespace="http://tempuri.org/DSLaporanPenjualan.xsd" xmlns:mstns="http://tempuri.org/DSLaporanPenjualan.xsd" xmlns="http://tempuri.org/DSLaporanPenjualan.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="MaspionConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MaspionConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Maspion.My.MySettings.GlobalReference.Default.MaspionConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LAPORAN_PENJUALANTableAdapter" GeneratorDataComponentClassName="LAPORAN_PENJUALANTableAdapter" Name="LAPORAN_PENJUALAN" UserDataComponentName="LAPORAN_PENJUALANTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MaspionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        REPLACE(NOTA.NO_NOTA, DIVISI.NAMA, '') AS NO_NOTA, NOTA.NO_REF, NOTA.TGL, NOTA.TGL_PENGAKUAN, REPLACE(NOTA.NO_DO, DIVISI.NAMA, '') AS NO_DO, NOTA.ID_DO, NOTA.DIVISI, NOTA.KODE_CUSTOMER, 
+                         NOTA.KODE_APPROVE, CUSTOMER.NAMA AS NAMA_CUSTOMER, DIVISI.NAMA AS NAMA_DIVISI, BARANG.KODE, BARANG.NAMA AS NAMA_BARANG, DETAIL_NOTA.ISI, DETAIL_NOTA.KOLI, DETAIL_NOTA.QUANTITY, 
+                         DETAIL_NOTA.SATUAN, DETAIL_NOTA.KONVERSI, DETAIL_NOTA.PCS, DETAIL_NOTA.HARGA, USERS.NAMA_USER, DETAIL_NOTA.DISC, DETAIL_NOTA.DISKON_SATUAN, NOTA.BATAL, 
+                         ISNULL(DELIVERY_ORDER.KODE_GUDANG_CUSTOMER,'') AS KODE_GUDANG_CUSTOMER
+FROM            BARANG INNER JOIN
+                         NOTA INNER JOIN
+                         DETAIL_NOTA ON NOTA.ID_TRANSAKSI = DETAIL_NOTA.ID_TRANSAKSI ON BARANG.ID = DETAIL_NOTA.ID_BARANG INNER JOIN
+                         USERS ON NOTA.CRUSER = USERS.ID_USER LEFT OUTER JOIN
+                         CUSTOMER ON NOTA.KODE_CUSTOMER = CUSTOMER.ID LEFT OUTER JOIN
+                         DIVISI ON NOTA.DIVISI = DIVISI.KODE LEFT OUTER JOIN
+                         DELIVERY_ORDER ON DELIVERY_ORDER.ID_TRANSAKSI = NOTA.ID_DO LEFT OUTER JOIN
+                         LINK_BARANG_PROMO ON BARANG.ID = LINK_BARANG_PROMO.ID_BARANG</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="NO_NOTA" DataSetColumn="NO_NOTA" />
+              <Mapping SourceColumn="NO_REF" DataSetColumn="NO_REF" />
+              <Mapping SourceColumn="TGL" DataSetColumn="TGL" />
+              <Mapping SourceColumn="TGL_PENGAKUAN" DataSetColumn="TGL_PENGAKUAN" />
+              <Mapping SourceColumn="NO_DO" DataSetColumn="NO_DO" />
+              <Mapping SourceColumn="ID_DO" DataSetColumn="ID_DO" />
+              <Mapping SourceColumn="DIVISI" DataSetColumn="DIVISI" />
+              <Mapping SourceColumn="KODE_CUSTOMER" DataSetColumn="KODE_CUSTOMER" />
+              <Mapping SourceColumn="KODE_APPROVE" DataSetColumn="KODE_APPROVE" />
+              <Mapping SourceColumn="NAMA_CUSTOMER" DataSetColumn="NAMA_CUSTOMER" />
+              <Mapping SourceColumn="NAMA_DIVISI" DataSetColumn="NAMA_DIVISI" />
+              <Mapping SourceColumn="KODE" DataSetColumn="KODE" />
+              <Mapping SourceColumn="NAMA_BARANG" DataSetColumn="NAMA_BARANG" />
+              <Mapping SourceColumn="ISI" DataSetColumn="ISI" />
+              <Mapping SourceColumn="KOLI" DataSetColumn="KOLI" />
+              <Mapping SourceColumn="QUANTITY" DataSetColumn="QUANTITY" />
+              <Mapping SourceColumn="SATUAN" DataSetColumn="SATUAN" />
+              <Mapping SourceColumn="KONVERSI" DataSetColumn="KONVERSI" />
+              <Mapping SourceColumn="PCS" DataSetColumn="PCS" />
+              <Mapping SourceColumn="HARGA" DataSetColumn="HARGA" />
+              <Mapping SourceColumn="NAMA_USER" DataSetColumn="NAMA_USER" />
+              <Mapping SourceColumn="DISC" DataSetColumn="DISC" />
+              <Mapping SourceColumn="DISKON_SATUAN" DataSetColumn="DISKON_SATUAN" />
+              <Mapping SourceColumn="BATAL" DataSetColumn="BATAL" />
+              <Mapping SourceColumn="KODE_GUDANG_CUSTOMER" DataSetColumn="KODE_GUDANG_CUSTOMER" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSLaporanPenjualan" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSLaporanPenjualan" msprop:Generator_UserDSName="DSLaporanPenjualan">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="LAPORAN_PENJUALAN" msprop:Generator_TableClassName="LAPORAN_PENJUALANDataTable" msprop:Generator_TableVarName="tableLAPORAN_PENJUALAN" msprop:Generator_TablePropName="LAPORAN_PENJUALAN" msprop:Generator_RowDeletingName="LAPORAN_PENJUALANRowDeleting" msprop:Generator_RowChangingName="LAPORAN_PENJUALANRowChanging" msprop:Generator_RowEvHandlerName="LAPORAN_PENJUALANRowChangeEventHandler" msprop:Generator_RowDeletedName="LAPORAN_PENJUALANRowDeleted" msprop:Generator_UserTableName="LAPORAN_PENJUALAN" msprop:Generator_RowChangedName="LAPORAN_PENJUALANRowChanged" msprop:Generator_RowEvArgName="LAPORAN_PENJUALANRowChangeEvent" msprop:Generator_RowClassName="LAPORAN_PENJUALANRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NO_NOTA" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNO_NOTA" msprop:Generator_ColumnPropNameInRow="NO_NOTA" msprop:Generator_ColumnPropNameInTable="NO_NOTAColumn" msprop:Generator_UserColumnName="NO_NOTA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NO_REF" msprop:Generator_ColumnVarNameInTable="columnNO_REF" msprop:Generator_ColumnPropNameInRow="NO_REF" msprop:Generator_ColumnPropNameInTable="NO_REFColumn" msprop:Generator_UserColumnName="NO_REF" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TGL" msprop:Generator_ColumnVarNameInTable="columnTGL" msprop:Generator_ColumnPropNameInRow="TGL" msprop:Generator_ColumnPropNameInTable="TGLColumn" msprop:Generator_UserColumnName="TGL" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TGL_PENGAKUAN" msprop:Generator_ColumnVarNameInTable="columnTGL_PENGAKUAN" msprop:Generator_ColumnPropNameInRow="TGL_PENGAKUAN" msprop:Generator_ColumnPropNameInTable="TGL_PENGAKUANColumn" msprop:Generator_UserColumnName="TGL_PENGAKUAN" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="NO_DO" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNO_DO" msprop:Generator_ColumnPropNameInRow="NO_DO" msprop:Generator_ColumnPropNameInTable="NO_DOColumn" msprop:Generator_UserColumnName="NO_DO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ID_DO" msprop:Generator_ColumnVarNameInTable="columnID_DO" msprop:Generator_ColumnPropNameInRow="ID_DO" msprop:Generator_ColumnPropNameInTable="ID_DOColumn" msprop:Generator_UserColumnName="ID_DO" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DIVISI" msprop:Generator_ColumnVarNameInTable="columnDIVISI" msprop:Generator_ColumnPropNameInRow="DIVISI" msprop:Generator_ColumnPropNameInTable="DIVISIColumn" msprop:Generator_UserColumnName="DIVISI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KODE_CUSTOMER" msprop:Generator_ColumnVarNameInTable="columnKODE_CUSTOMER" msprop:Generator_ColumnPropNameInRow="KODE_CUSTOMER" msprop:Generator_ColumnPropNameInTable="KODE_CUSTOMERColumn" msprop:Generator_UserColumnName="KODE_CUSTOMER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KODE_APPROVE" msprop:Generator_ColumnVarNameInTable="columnKODE_APPROVE" msprop:Generator_ColumnPropNameInRow="KODE_APPROVE" msprop:Generator_ColumnPropNameInTable="KODE_APPROVEColumn" msprop:Generator_UserColumnName="KODE_APPROVE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NAMA_CUSTOMER" msprop:Generator_ColumnVarNameInTable="columnNAMA_CUSTOMER" msprop:Generator_ColumnPropNameInRow="NAMA_CUSTOMER" msprop:Generator_ColumnPropNameInTable="NAMA_CUSTOMERColumn" msprop:Generator_UserColumnName="NAMA_CUSTOMER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NAMA_DIVISI" msprop:Generator_ColumnVarNameInTable="columnNAMA_DIVISI" msprop:Generator_ColumnPropNameInRow="NAMA_DIVISI" msprop:Generator_ColumnPropNameInTable="NAMA_DIVISIColumn" msprop:Generator_UserColumnName="NAMA_DIVISI" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KODE" msprop:Generator_ColumnVarNameInTable="columnKODE" msprop:Generator_ColumnPropNameInRow="KODE" msprop:Generator_ColumnPropNameInTable="KODEColumn" msprop:Generator_UserColumnName="KODE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NAMA_BARANG" msprop:Generator_ColumnVarNameInTable="columnNAMA_BARANG" msprop:Generator_ColumnPropNameInRow="NAMA_BARANG" msprop:Generator_ColumnPropNameInTable="NAMA_BARANGColumn" msprop:Generator_UserColumnName="NAMA_BARANG" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ISI" msprop:Generator_ColumnVarNameInTable="columnISI" msprop:Generator_ColumnPropNameInRow="ISI" msprop:Generator_ColumnPropNameInTable="ISIColumn" msprop:Generator_UserColumnName="ISI" type="xs:double" minOccurs="0" />
+              <xs:element name="KOLI" msprop:Generator_ColumnVarNameInTable="columnKOLI" msprop:Generator_ColumnPropNameInRow="KOLI" msprop:Generator_ColumnPropNameInTable="KOLIColumn" msprop:Generator_UserColumnName="KOLI" type="xs:double" minOccurs="0" />
+              <xs:element name="QUANTITY" msprop:Generator_ColumnVarNameInTable="columnQUANTITY" msprop:Generator_ColumnPropNameInRow="QUANTITY" msprop:Generator_ColumnPropNameInTable="QUANTITYColumn" msprop:Generator_UserColumnName="QUANTITY" type="xs:double" minOccurs="0" />
+              <xs:element name="SATUAN" msprop:Generator_ColumnVarNameInTable="columnSATUAN" msprop:Generator_ColumnPropNameInRow="SATUAN" msprop:Generator_ColumnPropNameInTable="SATUANColumn" msprop:Generator_UserColumnName="SATUAN" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="KONVERSI" msprop:Generator_ColumnVarNameInTable="columnKONVERSI" msprop:Generator_ColumnPropNameInRow="KONVERSI" msprop:Generator_ColumnPropNameInTable="KONVERSIColumn" msprop:Generator_UserColumnName="KONVERSI" type="xs:double" minOccurs="0" />
+              <xs:element name="PCS" msprop:Generator_ColumnVarNameInTable="columnPCS" msprop:Generator_ColumnPropNameInRow="PCS" msprop:Generator_ColumnPropNameInTable="PCSColumn" msprop:Generator_UserColumnName="PCS" type="xs:double" minOccurs="0" />
+              <xs:element name="HARGA" msprop:Generator_ColumnVarNameInTable="columnHARGA" msprop:Generator_ColumnPropNameInRow="HARGA" msprop:Generator_ColumnPropNameInTable="HARGAColumn" msprop:Generator_UserColumnName="HARGA" type="xs:double" minOccurs="0" />
+              <xs:element name="NAMA_USER" msprop:Generator_ColumnVarNameInTable="columnNAMA_USER" msprop:Generator_ColumnPropNameInRow="NAMA_USER" msprop:Generator_ColumnPropNameInTable="NAMA_USERColumn" msprop:Generator_UserColumnName="NAMA_USER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DISC" msprop:Generator_ColumnVarNameInTable="columnDISC" msprop:Generator_ColumnPropNameInRow="DISC" msprop:Generator_ColumnPropNameInTable="DISCColumn" msprop:Generator_UserColumnName="DISC" type="xs:double" minOccurs="0" />
+              <xs:element name="DISKON_SATUAN" msprop:Generator_ColumnVarNameInTable="columnDISKON_SATUAN" msprop:Generator_ColumnPropNameInRow="DISKON_SATUAN" msprop:Generator_ColumnPropNameInTable="DISKON_SATUANColumn" msprop:Generator_UserColumnName="DISKON_SATUAN" type="xs:double" minOccurs="0" />
+              <xs:element name="BATAL" msprop:Generator_ColumnVarNameInTable="columnBATAL" msprop:Generator_ColumnPropNameInRow="BATAL" msprop:Generator_ColumnPropNameInTable="BATALColumn" msprop:Generator_UserColumnName="BATAL" type="xs:boolean" minOccurs="0" />
+              <xs:element name="KODE_GUDANG_CUSTOMER" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnKODE_GUDANG_CUSTOMER" msprop:Generator_ColumnPropNameInRow="KODE_GUDANG_CUSTOMER" msprop:Generator_ColumnPropNameInTable="KODE_GUDANG_CUSTOMERColumn" msprop:Generator_UserColumnName="KODE_GUDANG_CUSTOMER" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

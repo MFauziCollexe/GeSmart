@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSSalesReportJakarta" targetNamespace="http://tempuri.org/DSSalesReportJakarta.xsd" xmlns:mstns="http://tempuri.org/DSSalesReportJakarta.xsd" xmlns="http://tempuri.org/DSSalesReportJakarta.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="MaspionConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="MaspionConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Maspion.My.MySettings.GlobalReference.Default.MaspionConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MaspionConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select f.tgl_kirim,b.tgl_pengakuan tgl_nota,d.nama nama_customer,g.nama nama_divisi,b.no_nota,case when c.PEMBAYARAN = 'KREDIT' and c.BAGIAN like '%Pusat%' then a.NETTO else 0 end as extern,case when c.PEMBAYARAN = 'KREDIT' and c.BAGIAN like '%Perwakilan%' then a.netto else 0 end as INTERN,case when c.PEMBAYARAN = 'Kontan' then a.netto else 0 end as CASH  from SALES_REPORT_JAKARTA_DETAIL a with(nolock) join NOTA B with(nolock) on a.ID_NOTA = b.ID_TRANSAKSI join (
+select ID_TRANSAKSI,DIVISI,pembayaran,bagian from DELIVERY_ORDER with(nolock) where JENIS_DO = 'Ada Barang'
+union
+select A.ID_TRANSAKSI,A.DIVISI,PEMBAYARAN,A.BAGIAN from BON_PESANAN a with(nolock) join DELIVERY_ORDER b with(nolock) on a.ID_DO = b.ID_TRANSAKSI and b.JENIS_DO &lt;&gt; 'Ada Barang') c on c.ID_TRANSAKSI = b.ID_DO join customer d with(nolock) on d.ID = a.ID_CUSTOMER join SALES_REPORT_JAKARTA f with(nolock) on f.ID_TRANSAKSI = a.ID_TRANSAKSI join divisi g with(nolock) on g.KODE = c.divisi
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="tgl_kirim" DataSetColumn="tgl_kirim" />
+              <Mapping SourceColumn="tgl_nota" DataSetColumn="tgl_nota" />
+              <Mapping SourceColumn="nama_customer" DataSetColumn="nama_customer" />
+              <Mapping SourceColumn="nama_divisi" DataSetColumn="nama_divisi" />
+              <Mapping SourceColumn="no_nota" DataSetColumn="no_nota" />
+              <Mapping SourceColumn="extern" DataSetColumn="extern" />
+              <Mapping SourceColumn="INTERN" DataSetColumn="INTERN" />
+              <Mapping SourceColumn="CASH" DataSetColumn="CASH" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSSalesReportJakarta" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSSalesReportJakarta" msprop:Generator_UserDSName="DSSalesReportJakarta">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="tgl_kirim" msprop:Generator_ColumnVarNameInTable="columntgl_kirim" msprop:Generator_ColumnPropNameInRow="tgl_kirim" msprop:Generator_ColumnPropNameInTable="tgl_kirimColumn" msprop:Generator_UserColumnName="tgl_kirim" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="tgl_nota" msprop:Generator_ColumnVarNameInTable="columntgl_nota" msprop:Generator_ColumnPropNameInRow="tgl_nota" msprop:Generator_ColumnPropNameInTable="tgl_notaColumn" msprop:Generator_UserColumnName="tgl_nota" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="nama_customer" msprop:Generator_ColumnVarNameInTable="columnnama_customer" msprop:Generator_ColumnPropNameInRow="nama_customer" msprop:Generator_ColumnPropNameInTable="nama_customerColumn" msprop:Generator_UserColumnName="nama_customer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="nama_divisi" msprop:Generator_ColumnVarNameInTable="columnnama_divisi" msprop:Generator_ColumnPropNameInRow="nama_divisi" msprop:Generator_ColumnPropNameInTable="nama_divisiColumn" msprop:Generator_UserColumnName="nama_divisi" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="no_nota" msprop:Generator_ColumnVarNameInTable="columnno_nota" msprop:Generator_ColumnPropNameInRow="no_nota" msprop:Generator_ColumnPropNameInTable="no_notaColumn" msprop:Generator_UserColumnName="no_nota">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="extern" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnextern" msprop:Generator_ColumnPropNameInRow="extern" msprop:Generator_ColumnPropNameInTable="externColumn" msprop:Generator_UserColumnName="extern" type="xs:double" minOccurs="0" />
+              <xs:element name="INTERN" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnINTERN" msprop:Generator_ColumnPropNameInRow="INTERN" msprop:Generator_ColumnPropNameInTable="INTERNColumn" msprop:Generator_UserColumnName="INTERN" type="xs:double" minOccurs="0" />
+              <xs:element name="CASH" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnCASH" msprop:Generator_ColumnPropNameInRow="CASH" msprop:Generator_ColumnPropNameInTable="CASHColumn" msprop:Generator_UserColumnName="CASH" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
